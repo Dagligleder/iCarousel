@@ -536,14 +536,15 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
                 radius = -radius;
                 angle = -angle;
             }
-            
+			
+			double sinAngle = sin(angle);
             if (_vertical)
             {
-                return CATransform3DTranslate(transform, 0.0, radius * sin(angle), radius * cos(angle) - radius);
+                return CATransform3DTranslate(transform, 0.0, radius * sinAngle, radius * cos(angle) - radius);
             }
             else
             {
-                return CATransform3DTranslate(transform, radius * sin(angle), 0.0, radius * cos(angle) - radius);
+                return CATransform3DTranslate(transform, radius * sinAngle, 0.0, radius * cos(angle) - radius);
             }
         }
         case iCarouselTypeCylinder:
